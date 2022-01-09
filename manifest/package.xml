@@ -3,11 +3,18 @@
 	<types>
 		<members>JiraIssueTriggerHandler</members>
 		<members>JiraIssueTriggerTest</members>
+		<members>JiraIntegrationRequest</members>
+		<members>JiraIntegrationGetIssuesController</members>
+		<members>JiraIntegrationGetIssuesControllerTest</members>
 		<name>Apexclass</name>
 	</types>
 	<types>
 		<members>JiraIssueTrigger</members>
 		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>JiraIntegrationGetIssues</members>
+		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
 		<members>jiralogo</members>
@@ -71,6 +78,10 @@
 		<members>Jira_Project__c-Project Layout</members>
 		<members>Jira_Sprint__c-Sprint Layout</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>Jira_Integration_Url</members>
+		<name>RemoteSiteSetting</name>
 	</types>
 	<version>53.0</version>
 </Package>

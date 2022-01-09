@@ -6,6 +6,18 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>JiraIntegrationGetIssuesController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>JiraIntegrationGetIssuesControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>JiraIntegrationRequest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>JiraIssueTriggerHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -21,6 +33,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Jira_Epic__c.Assignee_User__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Jira_Epic__c.Description__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -32,6 +49,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Jira_Epic__c.Reporter_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Jira_Epic__c.Reporter_User__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -66,7 +88,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Jira_Issue__c.Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Jira_Project__c.Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Jira_Sprint__c.Project__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <layoutAssignments>

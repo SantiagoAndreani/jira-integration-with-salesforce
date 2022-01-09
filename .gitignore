@@ -43,4 +43,7 @@ $RECYCLE.BIN/
 Docs.txt
 
 # Custom Metadata Credentials
-force-app/main/default/customMetadata
+force-app/main/default/customMetadata/*
+
+# Remote Site Settings
+force-app/main/default/remoteSiteSettings/*

@@ -56,7 +56,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
-                    <value>OpenActivities</value>
+                    <value>CombinedAttachments</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
@@ -104,8 +104,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Description__c</fieldItem>
-                <identifier>RecordDescription_cField1</identifier>
+                <fieldItem>Record.Label__c</fieldItem>
+                <identifier>RecordLabel_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -114,8 +114,18 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Sprint__c</fieldItem>
-                <identifier>RecordSprint_cField1</identifier>
+                <fieldItem>Record.Story_Point__c</fieldItem>
+                <identifier>RecordStory_Point_cField1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-c25d14a4-4242-4bf6-bc5f-f28734068df1</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Project__c</fieldItem>
+                <identifier>RecordProject_cField1</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -132,46 +142,12 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Label__c</fieldItem>
-                <identifier>RecordLabel_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Story_Point__c</fieldItem>
-                <identifier>RecordStory_Point_cField1</identifier>
+                <fieldItem>Record.Sprint__c</fieldItem>
+                <identifier>RecordSprint_cField1</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Story_Points__c</fieldItem>
-                <identifier>RecordStory_Points_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Id__c</fieldItem>
-                <identifier>RecordId_cField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-c25d14a4-4242-4bf6-bc5f-f28734068df1</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <name>Facet-90cccb59-d8b3-4181-8595-684525657f66</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -201,6 +177,34 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Description__c</fieldItem>
+                <identifier>RecordDescription_cField1</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-fc7ec876-bc6c-40ca-8f28-64fad0f45223</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-fc7ec876-bc6c-40ca-8f28-64fad0f45223</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-11d5c8a0-56ac-40fc-93ff-67ace0bd4027</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
@@ -214,77 +218,21 @@
                 <identifier>flexipage_fieldSection1</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-998a579d-c9b0-48d1-b758-64be205ba619</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CreatedById</fieldItem>
-                <identifier>RecordCreatedByIdField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-fb668208-971d-417f-847d-bfa668f90548</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.LastModifiedById</fieldItem>
-                <identifier>RecordLastModifiedByIdField1</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-6dcb653e-dc91-45bb-899d-d0523014efe6</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fb668208-971d-417f-847d-bfa668f90548</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-6dcb653e-dc91-45bb-899d-d0523014efe6</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-355b0fcb-241e-4c55-8148-b8662a8ab094</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-355b0fcb-241e-4c55-8148-b8662a8ab094</value>
+                    <value>Facet-11d5c8a0-56ac-40fc-93ff-67ace0bd4027</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>System Information</value>
+                    <value>Description</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <identifier>flexipage_fieldSection3</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-12b7c71d-e83d-4407-a8f0-f12842179dae</name>
+        <name>Facet-998a579d-c9b0-48d1-b758-64be205ba619</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -306,24 +254,6 @@
                 <identifier>flexipage_accordionSection1</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-12b7c71d-e83d-4407-a8f0-f12842179dae</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Standard.Tab.additionalFields</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>name</name>
-                    <value>accordionSection2</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:accordionSection</componentName>
-                <identifier>flexipage_accordionSection2</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-4b0f1ec2-0757-437c-b0ba-3994df5c8b18</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -340,12 +270,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion1</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>force:recordDetailPanelMobile</componentName>
-                <identifier>force_recordDetailPanelMobile1</identifier>
             </componentInstance>
         </itemInstances>
         <name>main</name>

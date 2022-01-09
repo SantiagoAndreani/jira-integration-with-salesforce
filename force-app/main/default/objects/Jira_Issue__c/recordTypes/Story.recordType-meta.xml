@@ -56,4 +56,15 @@
             <default>false</default>
         </values>
     </picklistValues>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>DEPLOY</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UAT</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
 </RecordType>
