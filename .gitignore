@@ -41,3 +41,6 @@ $RECYCLE.BIN/
 
 # Documentacion
 Docs.txt
+
+# Custom Metadata Credentials
+force-app/main/default/customMetadata

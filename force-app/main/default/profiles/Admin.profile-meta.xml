@@ -5,7 +5,20 @@
         <default>false</default>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>JiraIssueTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>JiraIssueTriggerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Jira_Epic__c.Assignee_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Jira_Epic__c.Description__c</field>
@@ -14,6 +27,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Jira_Epic__c.Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Jira_Epic__c.Reporter_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -38,6 +56,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Jira_Issue__c.Project__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Jira_Issue__c.Story_Points__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -46,6 +69,41 @@
         <field>Jira_Project__c.Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>Jira_Epic__c-Epic Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Integration__mdt-Jira Integration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Issue__c-Issue Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Issue__c-Issue Layout</layout>
+        <recordType>Jira_Issue__c.Bug</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Issue__c-Issue Layout</layout>
+        <recordType>Jira_Issue__c.Story</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Issue__c-Issue Layout</layout>
+        <recordType>Jira_Issue__c.Task</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Project__c-Project Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Sprint__c-Sprint Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Sprint__c-Sprint Layout</layout>
+        <recordType>Jira_Sprint__c.Backlog</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Jira_Sprint__c-Sprint Layout</layout>
+        <recordType>Jira_Sprint__c.Sprint</recordType>
+    </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>

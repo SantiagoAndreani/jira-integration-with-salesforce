@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>JiraIssueTriggerHandler</members>
+		<members>JiraIssueTriggerTest</members>
+		<name>Apexclass</name>
+	</types>
+	<types>
+		<members>JiraIssueTrigger</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
 		<members>jiralogo</members>
 		<name>ContentAsset</name>
 	</types>
@@ -50,6 +59,18 @@
 		<members>Jira/jira-sprint.png</members>
 		<members>Jira/jira-project.png</members>
 		<name>Document</name>
+	</types>
+	<types>
+		<members>Jira</members>
+		<name>CustomMetadata</name>
+	</types>
+		<types>
+		<members>Jira_Epic__c-Epic Layout</members>
+		<members>Jira_Integration__mdt-Jira Integration Layout</members>
+		<members>Jira_Issue__c-Issue Layout</members>
+		<members>Jira_Project__c-Project Layout</members>
+		<members>Jira_Sprint__c-Sprint Layout</members>
+		<name>Layout</name>
 	</types>
 	<version>53.0</version>
 </Package>
