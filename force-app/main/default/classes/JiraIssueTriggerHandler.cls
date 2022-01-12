@@ -1,5 +1,9 @@
 public with sharing class JiraIssueTriggerHandler {
     
+    // CONTEXT VARIABLES
+    Map<Id,Jira_Issue__c> newIdPerIssue = (Map<Id,Jira_Issue__c>) Trigger.newMap;
+    Map<Id,Jira_Issue__c> oldIdPerIssue = (Map<Id,Jira_Issue__c>) Trigger.oldMap;
+
     public void run () {
 
         switch on Trigger.operationType {
@@ -15,15 +19,10 @@ public with sharing class JiraIssueTriggerHandler {
             }
             when AFTER_UPDATE {
                 System.debug('after update issue');
+                JiraIntegrationPutIssueController.updateIssueToJira(newIdPerIssue, oldIdPerIssue);
             }
             when BEFORE_DELETE {
                 System.debug('before delete issue');
-            }
-            when AFTER_DELETE {
-                System.debug('after delete issue');
-            }
-            when AFTER_UNDELETE {
-                System.debug('after undelete issue');
             }
         }
     }
