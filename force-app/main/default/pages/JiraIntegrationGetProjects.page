@@ -1,0 +1,9 @@
+<apex:page standardController="Jira_Project__c"
+  recordSetVar="project"
+  extensions="JiraIntegrationGetProjectsController"
+>
+  
+  <script>
+    console.log('get projects')
+  </script>
+</apex:page>

@@ -160,6 +160,11 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Issues</pluralLabel>
+    <profileSearchLayouts>
+        <fields>NAME</fields>
+        <fields>Description__c</fields>
+        <profileName>System Administrator</profileName>
+    </profileSearchLayouts>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
@@ -171,10 +176,8 @@
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>PrintableListView</excludedStandardButtons>
         <excludedStandardButtons>IsotopeSubscription</excludedStandardButtons>
-        <listViewButtons>Jira_Get_Issues</listViewButtons>
+        <listViewButtons>Get_Issues</listViewButtons>
         <searchFilterFields>NAME</searchFilterFields>
-        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
-        <searchResultsCustomButtons>Jira_Get_Issues</searchResultsCustomButtons>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>

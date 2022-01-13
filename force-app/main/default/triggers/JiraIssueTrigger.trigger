@@ -3,9 +3,7 @@ trigger JiraIssueTrigger on Jira_Issue__c (
   after insert,
   before update,
   after update,
-  before delete,
-  after delete,
-  after undelete) {
+  before delete) {
 
     new JiraIssueTriggerHandler().run();
 }

@@ -1,6 +1,9 @@
-<apex:page 
-  standardController="Jira_Issue__c"
-  recordSetVar="issues"
+<apex:page standardController="Jira_Issue__c"
+  recordSetVar="issue"
+  extensions="JiraIntegrationGetIssuesController"
 >
   
+  <script>
+    console.log('get issues')
+  </script>
 </apex:page>

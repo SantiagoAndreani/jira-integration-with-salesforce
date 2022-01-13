@@ -1,42 +1,113 @@
 public with sharing class JiraIntegrationRequest {
 
-    public static final String GET = 'GET';
+    public static final String GET_ISSUES = 'Get_Issues';
+    public static final String PUT_ISSUE = 'Put_Issue';
+    public static final String GET_PROJECTS = 'Get_Projects';
+    public static final String GET_SPRINTS = 'Get_Sprints';
+    public static final String GET_EPICS = 'Get_Epics';
+    public static final String CREDENTIALS = 'Credentials';
     public static final String ACCEPT = 'Accept';
     public static final String CONTENT_TYPE = 'Content-Type';
+    public static final String AUTHORIZATION = 'Authorization';
     public static final String APPLICATION_JSON = 'application/json';
 
-    public static void getIssues() {
-
-        List<Jira_Integration__mdt> jiraCredentials = getJiraIntegrationMedatada();
-        String TOKEN = jiraCredentials[0].Token__c;
-        String URL = jiraCredentials[0].Url__c;
-        String APPLICATION_JSON = 'application/json';
-
-        HttpRequest request = new HttpRequest();
-        request.setMethod(GET);
-        request.setEndpoint(URL +'/issue/ADS-5');
-        request.setHeader(ACCEPT, APPLICATION_JSON);
-        request.setHeader(CONTENT_TYPE, APPLICATION_JSON);
-
-        System.debug('request');
-        System.debug(request);
-
-        Http http = new Http();
-        HttpResponse response = http.send(request);
-
-        System.debug('response');
-        System.debug(response);
+    public static void getProjectsFromJira() {
+        Map<String,Jira_Integration__mdt> namePerJiraMdt = 
+            getJiraIntegrationMedatadata(GET_PROJECTS);
+        HttpRequest request = setRequest(namePerJiraMdt.get(CREDENTIALS));
+        Jira_Integration__mdt mdt = namePerJiraMdt.get(GET_ISSUES);
+        request.setMethod(mdt.Method__c);
+        makeRequest(request, GET_PROJECTS);
     }
 
-    public static List<Jira_Integration__mdt> getJiraIntegrationMedatada() {
-        return [
+    public static void getIssuesFromJira(String project) {
+        Map<String,Jira_Integration__mdt> namePerJiraMdt = 
+            getJiraIntegrationMedatadata(GET_ISSUES);
+        HttpRequest request = setRequest(namePerJiraMdt.get(CREDENTIALS));
+        Jira_Integration__mdt mdt = namePerJiraMdt.get(GET_ISSUES);
+        request.setMethod(mdt.Method__c);
+        request.setEndpoint(request.getEndpoint() + mdt.Endpoint__c + project);
+        makeRequest(request, GET_ISSUES);
+    }
+
+    public static void putIssueToJira(String id, String body) {
+        Map<String,Jira_Integration__mdt> namePerJiraMdt = getJiraIntegrationMedatadata(PUT_ISSUE);
+        HttpRequest request = setRequest(namePerJiraMdt.get(CREDENTIALS));
+        Jira_Integration__mdt mdt = namePerJiraMdt.get(PUT_ISSUE);
+        request.setMethod(mdt.Method__c);
+        request.setEndpoint(request.getEndpoint() + mdt.Endpoint__c + id);
+        request.setBody(body);
+        makeRequest(request, PUT_ISSUE);
+    }
+
+    public static HttpRequest setRequest(Jira_Integration__mdt credentials) {
+        String TOKEN = credentials.Token__c;
+        String EMAIL = credentials.Email__c;
+        String URL = credentials.Url__c;
+        HttpRequest request = new HttpRequest();
+        request.setHeader(ACCEPT, APPLICATION_JSON);
+        request.setHeader(CONTENT_TYPE, APPLICATION_JSON);
+        request.setHeader(AUTHORIZATION, getAuthorization(EMAIL, TOKEN));
+        request.setEndpoint(URL);
+        return request;
+    }
+
+    public static void makeRequest(HttpRequest request, String TYPE) {
+        Http http = new Http();
+        HttpResponse response = http.send(request);
+        Integer statusCode = response.getStatusCode();
+        String status = response.getStatus();
+        // 200 
+        if (statusCode == 200) {
+            // PROJECT
+            if (GET_PROJECTS == TYPE) {
+                JiraIntegrationGetProjectsController.upsertProjects(response);
+            }
+            // SPRINTS
+            if (GET_SPRINTS == TYPE) {
+                // TODO: GET_SPRINTS
+            }
+            // EPICS
+            if (GET_EPICS == TYPE) {
+                // TODO: GET_EPICS
+            }
+            // ISSUES
+            if (GET_ISSUES == TYPE) {
+                JiraIntegrationGetIssuesController.upsertIssues(response);
+            }
+            if (PUT_ISSUE == TYPE) {
+                // TODO: PUT_ISSUE
+            }
+            else {
+                System.debug(LoggingLevel.WARN, TYPE + ' not defined');
+                System.debug(LoggingLevel.WARN, statusCode + ': ' + status);
+                System.debug(LoggingLevel.WARN, response.getBody());
+            }
+        }
+    }
+
+    public static String getAuthorization(String email, String token) {
+        return 'Basic ' + EncodingUtil.base64Encode(Blob.valueOf(email + ':' + token));
+    }
+
+    public static Map<String,Jira_Integration__mdt> getJiraIntegrationMedatadata(String nameMdt) {
+        List<Jira_Integration__mdt> jiraMdt = [
             SELECT Id, 
                 DeveloperName, 
                 Label, 
                 Token__c, 
-                Url__c 
+                Url__c,
+                Email__c,
+                Endpoint__c,
+                Method__c 
             FROM Jira_Integration__mdt
-            LIMIT 1
+            WHERE DeveloperName =: CREDENTIALS
+            OR DeveloperName =: nameMdt
         ];
+        Map<String,Jira_Integration__mdt> namePerJiraMdt = new Map<String,Jira_Integration__mdt>();
+        for (Jira_Integration__mdt eachMdt : jiraMdt) {
+            namePerJiraMdt.put(eachMdt.DeveloperName, eachMdt);
+        }
+        return namePerJiraMdt;
     }
 }
