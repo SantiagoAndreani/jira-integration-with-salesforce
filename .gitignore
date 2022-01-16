@@ -49,4 +49,13 @@ force-app/main/default/customMetadata/*
 force-app/main/default/remoteSiteSettings/*
 
 # Responses
-responses
+responses/*
+
+# Static Resources
+force-app/main/default/staticresources/*
+
+# APEX
+scripts/apex/*
+
+# SOQL
+scripts/soql/*
