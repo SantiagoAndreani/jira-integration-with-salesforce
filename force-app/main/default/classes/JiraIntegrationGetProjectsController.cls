@@ -1,14 +1,32 @@
 public with sharing class JiraIntegrationGetProjectsController {
 
+    public ApexPages.StandardController controller;
+
     // CONSTRUCTOR
-    public JiraIntegrationGetProjectsController(
-        ApexPages.StandardSetController stdSetController) {
-            // TODO: constructor get projects not redirect
+    public JiraIntegrationGetProjectsController(ApexPages.StandardController controller) {
+        this.controller = controller;
     }
 
     // GET PROJECTS
-    public static Map<String,Object> getProjects() {
-        return JiraIntegrationRequest.getProjectsFromJira();
+    public Pagereference getProjects() {
+
+        Map<String,Object> response = 
+            JiraIntegrationRequest.getProjectsFromJira();
+        if (response.containsKey(Jira.STATUS_CODE) &&
+            response.containsKey(Jira.MSG)) {
+                // 200
+                if (response.get(Jira.STATUS_CODE) ==  200 &&
+                    response.get(Jira.MSG) == Jira.OK) {
+                        return new ApexPages.Action('{!list}').invoke();
+                    }
+                else {
+                    // TODO: 404 500
+                }
+            }
+        else {
+            // TODO: not response
+        }
+        return controller.view();
     }
 
     // UPSERT PROJECTS

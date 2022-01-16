@@ -1,10 +1,9 @@
-<apex:page standardController="Jira_Project__c"
-  recordSetVar="project"
+<apex:page
+  standardController="Jira_Project__c"
   extensions="JiraIntegrationGetProjectsController"
   action="{!getProjects}"
 >
-  <!-- TODO: not refresh -->
-  <script>
-    console.log('get projects')
-  </script>
+
+  <!-- TODO: error page -->
+
 </apex:page>

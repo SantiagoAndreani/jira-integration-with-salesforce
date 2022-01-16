@@ -6,14 +6,14 @@ public with sharing class JiraIntegrationGetProjectsControllerTest {
 
         // INSERT PROJECT
         Jira_Project__c project = new Jira_Project__c(
-            Name = 'Clasificados',
+            Name = 'Clasificado',
             Id__c = '10002',
             Key__c = 'VIS'
         );
         insert project;
     }
 
-    // GET PROJECTS - UPSERT PROJECTS
+    // GET PROJECTS - UPSERT PROJECTS - 200
     @isTest 
     static void getProjects_upsertProjects_200() {
 
@@ -24,9 +24,12 @@ public with sharing class JiraIntegrationGetProjectsControllerTest {
         mock.setHeader(Jira.CONTENT_TYPE, Jira.APPLICATION_JSON);
         Test.setMock(HttpCalloutMock.class, mock);
 
-        Map<String,Object> response = new Map<String,Object>();
+        ApexPages.StandardController standardController;
+        Pagereference pageReference;
         Test.startTest();
-        response = JiraIntegrationGetProjectsController.getProjects();
+        JiraIntegrationGetProjectsController controller = 
+            new JiraIntegrationGetProjectsController(standardController);
+        pageReference = controller.getProjects();
         Test.stopTest();
 
         List<Jira_Project__c> projects = [
@@ -41,18 +44,14 @@ public with sharing class JiraIntegrationGetProjectsControllerTest {
             idPerProject.put(eachProj.Key__c, eachProj);
         }
 
-        System.assertEquals(200, response.get(Jira.STATUS_CODE), 
-            'MUST BE SAME STATUS CODE');
-        System.assertEquals(Jira.OK, response.get(Jira.MSG));
+        System.debug(pageReference);
         System.assertEquals(2, projects.size(), 
             'MUST BE SAME SIZE OF JIRA PROJECTS');
         System.assertEquals('Publicidad', idPerProject.get('ADS').Name, 
-            'MUST BE SAME PROJECT NAME');
+            'MUST BE SAME PROJECT NAME INSERTED');
         System.assertEquals('10001', idPerProject.get('ADS').Id__c, 
-            'MUST BE SAME PROJECT ID');
+            'MUST BE SAME PROJECT ID INSERTED');
         System.assertEquals('Clasificados', idPerProject.get('VIS').Name, 
-            'MUST BE SAME PROJECT NAME');
-        System.assertEquals('10002', idPerProject.get('VIS').Id__c, 
-            'MUST BE SAME PROJECT ID');
+            'MUST BE SAME PROJECT NAME UPDATED');
     }
 }
