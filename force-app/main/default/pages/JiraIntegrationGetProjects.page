@@ -3,6 +3,7 @@
   extensions="JiraIntegrationGetProjectsController"
   action="{!getProjects}"
 >
+  <!-- TODO: not refresh -->
   <script>
     console.log('get projects')
   </script>

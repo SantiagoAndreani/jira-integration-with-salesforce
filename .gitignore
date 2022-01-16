@@ -54,8 +54,5 @@ responses/*
 # Static Resources
 force-app/main/default/staticresources/*
 
-# APEX
-scripts/apex/*
-
-# SOQL
-scripts/soql/*
+# Scripts
+scripts/*

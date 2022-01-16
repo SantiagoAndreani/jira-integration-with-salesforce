@@ -1,6 +1,7 @@
 <apex:page standardController="Jira_Issue__c"
   recordSetVar="issue"
   extensions="JiraIntegrationGetIssuesController"
+  action="{!getIssues}"
 >
   
   <script>

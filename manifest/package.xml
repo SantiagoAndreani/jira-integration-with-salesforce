@@ -110,5 +110,11 @@
 		<members>Jira_Project__c.Get_Projects</members>
 		<name>WebLink</name>
 	</types>
+<!-- STATIC RESOURCES -->
+	<types>
+		<members>JiraIntegrationGetProjectsControllerTest_getProjects_upsertProjects_200</members>
+		<name>StaticResource</name>
+	</types>
 	<version>53.0</version>
 </Package>
+
