@@ -3,9 +3,14 @@ public with sharing class JiraIntegrationGetProjectsControllerTest {
 
     @testSetup 
     static void setup() {
-        
-        // JiraIntegrationGetProjectsController controller = new
-        //     JiraIntegrationGetIssuesController(new ApexPages.StandardSetController());
+
+        // INSERT PROJECT
+        Jira_Project__c project = new Jira_Project__c(
+            Name = 'Clasificados',
+            Id__c = '10002',
+            Key__c = 'VIS'
+        );
+        insert project;
     }
 
     // GET PROJECTS - UPSERT PROJECTS
@@ -36,9 +41,9 @@ public with sharing class JiraIntegrationGetProjectsControllerTest {
             idPerProject.put(eachProj.Key__c, eachProj);
         }
 
-        System.assertEquals(200, response.get('statusCode'), 
+        System.assertEquals(200, response.get(Jira.STATUS_CODE), 
             'MUST BE SAME STATUS CODE');
-        System.assertEquals('OK', response.get('msg'));
+        System.assertEquals(Jira.OK, response.get(Jira.MSG));
         System.assertEquals(2, projects.size(), 
             'MUST BE SAME SIZE OF JIRA PROJECTS');
         System.assertEquals('Publicidad', idPerProject.get('ADS').Name, 
