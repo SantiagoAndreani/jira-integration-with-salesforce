@@ -13,10 +13,10 @@ public with sharing class JiraIntegrationGetProjectsController {
         Map<String,Object> response = 
             JiraIntegrationRequest.getProjectsFromJira();
         if (response.containsKey(Jira.STATUS_CODE) &&
-            response.containsKey(Jira.MSG)) {
+            response.containsKey(Jira.STATUS)) {
                 // 200
                 if (response.get(Jira.STATUS_CODE) ==  200 &&
-                    response.get(Jira.MSG) == Jira.OK) {
+                    response.get(Jira.STATUS) == Jira.OK) {
                         return new ApexPages.Action('{!list}').invoke();
                     }
                 else {
@@ -40,17 +40,19 @@ public with sharing class JiraIntegrationGetProjectsController {
         }
         else {
             response.put(Jira.STATUS_CODE, 404);
-            response.put(Jira.MSG, 'No Projects returned');
+            response.put(Jira.STATUS, Jira.ERROR);
+            response.put(Jira.DATA, 'No projects returned');
         }
         if (!projectsToUpsert.isEmpty()) {
             try {
                 upsert projectsToUpsert;
                 response.put(Jira.STATUS_CODE, 200);
-                response.put(Jira.MSG, Jira.OK);
+                response.put(Jira.STATUS, Jira.OK);
             }
             catch (Exception ex) {
                 response.put(Jira.STATUS_CODE, 500);
-                response.put(Jira.MSG, ex.getMessage());
+                response.put(Jira.STATUS, Jira.ERROR);
+                response.put(Jira.DATA, ex.getMessage());
                 System.debug(LoggingLevel.ERROR, ex.getMessage());
             }
         }

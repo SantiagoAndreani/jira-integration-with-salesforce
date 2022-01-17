@@ -57,7 +57,7 @@ public with sharing class JiraIntegrationRequest {
         HttpResponse response = http.send(request);
         Integer statusCode = response.getStatusCode();
         String status = response.getStatus();
-        // 200 
+        // 200
         if (statusCode == 200 && status == Jira.OK) {
             // PROJECT
             if (Jira.GET_PROJECTS == TYPE) {
@@ -65,20 +65,14 @@ public with sharing class JiraIntegrationRequest {
             }
             // SPRINTS
             if (Jira.GET_SPRINTS == TYPE) {
-                // TODO: GET_SPRINTS
-                // JiraIntegrationGetSprintsController.upsertSprints(response);
             }
             // EPICS
             if (Jira.GET_EPICS == TYPE) {
-                // TODO: GET_EPICS
-                // JiraIntegrationGetEpicsController.upsertEpics(response);
             }
             // ISSUES
             if (Jira.GET_ISSUES == TYPE) {
-                // JiraIntegrationGetIssuesController.upsertIssues(response);
             }
             if (Jira.PUT_ISSUE == TYPE) {
-                // TODO: PUT_ISSUE
             }
             else {
                 System.debug(LoggingLevel.WARN, TYPE + ' not defined');
@@ -86,9 +80,12 @@ public with sharing class JiraIntegrationRequest {
                 System.debug(LoggingLevel.WARN, response.getBody());
             }
         }
-        // TODO: other status codes
+        // ERRORS
         else {
-
+            return new Map<String,Object>{
+                Jira.STATUS_CODE => statusCode,
+                Jira.STATUS => status,
+                Jira.DATA => response.getBody()};
         }
         return null;
     }

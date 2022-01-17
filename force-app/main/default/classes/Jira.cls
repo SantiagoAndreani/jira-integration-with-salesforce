@@ -14,8 +14,10 @@ public with sharing class Jira {
     public static final String CONTENT_TYPE = 'Content-Type';
     public static final String AUTHORIZATION = 'Authorization';
     public static final String APPLICATION_JSON = 'application/json';
-    public static final String OK = 'OK';
     // FRONT RESPONSE
     public static final String STATUS_CODE = 'statusCode';
-    public static final String MSG = 'msg';
+    public static final String STATUS = 'status';
+    public static final String OK = 'OK';
+    public static final String ERROR ='ERROR';
+    public static final String DATA = 'data';
 }
